@@ -412,6 +412,7 @@ export async function searchPosts(searchTerm: string) {
     ]);
 
     if (!posts) throw Error;
+
     return posts;
   } catch (error) {
     console.log(error);
