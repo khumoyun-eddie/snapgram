@@ -27,8 +27,8 @@ type PostFormPros = {
 };
 
 const PostForm = ({ post, action }: PostFormPros) => {
-  const { mutateAsync: createPost, isPending: isLoadingCreate } = useCreatePost();
-  const { mutateAsync: updatePost, isPending: isLoadingUpdate } = useUpdatePost();
+  const { mutateAsync: createPost, isPending: isPendingCreate } = useCreatePost();
+  const { mutateAsync: updatePost, isPending: isPendingUpdate } = useUpdatePost();
 
   const { user } = useUserContext();
   const { toast } = useToast();
@@ -136,9 +136,9 @@ const PostForm = ({ post, action }: PostFormPros) => {
           <Button
             className='shad-button_primary whitespace-nowrap'
             type='submit'
-            disabled={isLoadingCreate || isLoadingUpdate}
+            disabled={isPendingCreate || isPendingUpdate}
           >
-            {isLoadingCreate || (isLoadingUpdate && "Loading...")}
+            {isPendingCreate || (isPendingUpdate && "Loading...")}
             {action} Post
           </Button>
         </div>

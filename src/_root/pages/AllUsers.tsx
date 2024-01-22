@@ -6,7 +6,7 @@ import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
 const AllUsers = () => {
   const { toast } = useToast();
 
-  const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();
+  const { data: creators, isPending, isError: isErrorCreators } = useGetUsers();
 
   if (isErrorCreators) {
     toast({ title: "Something went wrong." });
@@ -18,7 +18,7 @@ const AllUsers = () => {
     <div className='common-container'>
       <div className='user-container'>
         <h2 className='w-full text-left h3-bold md:h2-bold'>All Users</h2>
-        {isLoading && !creators ? (
+        {isPending && !creators ? (
           <Loader />
         ) : (
           <ul className='user-grid'>
