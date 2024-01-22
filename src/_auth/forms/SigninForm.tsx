@@ -2,13 +2,19 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Button,
+  Input,
+  useToast,
+} from "@/components/ui";
 import { SigninValidation } from "@/lib/validation";
 import Loader from "@/components/shared/Loader";
-import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
 import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext } from "@/context/AuthContext";
 
@@ -38,7 +44,6 @@ const SigninForm = () => {
       return toast({
         variant: "destructive",
         title: "Sign In failed. Please try again!",
-        action: <ToastAction altText='Try again'>Try again</ToastAction>,
       });
     }
 
@@ -50,7 +55,6 @@ const SigninForm = () => {
       return toast({
         variant: "destructive",
         title: "Sign In failed. Please try again!",
-        action: <ToastAction altText='Try again'>Try again</ToastAction>,
       });
     }
   }
